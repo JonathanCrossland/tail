@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "dotnet",
+			"task": "build c:\\coding\\csharpsource\\tail\\tail.csproj",
+			"file": "c:\\coding\\csharpsource\\tail\\tail.csproj",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "dotnet: build c:\\coding\\csharpsource\\tail\\tail.csproj"
+		}
+	]
+}

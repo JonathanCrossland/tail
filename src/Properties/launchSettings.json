@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "tail": {
+      "commandName": "Project",
+      "commandLineArgs": "--test"
+    }
+  }
+}
