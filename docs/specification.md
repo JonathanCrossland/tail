@@ -5,6 +5,8 @@ You send an input ```# Title``` and it runs through the ```Definitions```, to ma
 
 ## Definition
 
+The definition is composed of a simple idea: How little constructs are needed to create a powerful tool?
+It is also important to be easy to read and debug visually.
 
 
 | syntax | Name | Description| 
