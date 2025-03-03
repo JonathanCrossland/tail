@@ -1,15 +1,27 @@
+using tail.Tests;
+
 public class Program
 {
-    private static int _testCaseCounter = 0; // Static counter to keep track of test cases
-
   
     public static void Main(string[] args)
     {
         Console.WriteLine("Tail---__---");
 
-        if (args.Length > 0 && args[0] == "--test")
+        if (args.Length > 0 && args[0].StartsWith("--test"))
         {
-            TestRunner.RunTests();
+            var split = args[0].Split("=");
+
+            switch (split[1].ToLower())
+            {
+                case "general":
+                    new GeneralTests().Run();
+                    break;
+                case "markdown":
+                    new MarkdownTests().Run();
+                    break;
+                default:
+                    break;
+            }
         }
         else if (args.Length >= 3 && args[0] == "--def" && args[1] == "--template")
         {

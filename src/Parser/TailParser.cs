@@ -30,6 +30,7 @@ public class TailParser
             EatPrefix();
             EatSuffix();
             EatContainsLiteral();
+            EatWhitespace();
             EatLiteral();
         }
 
@@ -144,10 +145,10 @@ public class TailParser
 
     private void EatLiteral()
     {
-        if (_Position < _Input.Length && !IsSpecialCharacter(PeekChar()))
+        if (_Position < _Input.Length && !IsSpecialCharacter(PeekChar()) && !char.IsWhiteSpace(PeekChar()))
         {
             StringBuilder literalValue = new StringBuilder();
-            while (_Position < _Input.Length && !IsSpecialCharacter(PeekChar()))
+            while (_Position < _Input.Length && !IsSpecialCharacter(PeekChar()) && !char.IsWhiteSpace(PeekChar()))
             {
                 literalValue.Append(ReadChar());
                 _Position++;
@@ -156,6 +157,20 @@ public class TailParser
             {
                 AppendLiteral(literalValue.ToString());
             }
+        }
+    }
+
+    private void EatWhitespace()
+    {
+        if (_Position < _Input.Length && char.IsWhiteSpace(PeekChar()))
+        {
+            StringBuilder whitespaceValue = new StringBuilder();
+            while (_Position < _Input.Length && char.IsWhiteSpace(PeekChar()))
+            {
+                whitespaceValue.Append(ReadChar());
+                _Position++;
+            }
+            _Tokens.Add(new WhitespaceToken(whitespaceValue.ToString()));
         }
     }
 
@@ -220,7 +235,7 @@ public class TailParser
 
     public class PriorityToken : Token
     {
-        public PriorityToken(): base(){}
+        public PriorityToken() : base() { }
     }
 
     public class PrefixToken : Token
@@ -241,5 +256,10 @@ public class TailParser
     public class ContainsLiteralToken : Token
     {
         public ContainsLiteralToken(string value) : base(value) { }
+    }
+
+    public class WhitespaceToken : Token
+    {
+        public WhitespaceToken(string value) : base(value) { }
     }
 }

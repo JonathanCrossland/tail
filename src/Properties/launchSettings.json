@@ -1,8 +1,16 @@
 {
   "profiles": {
-    "tail": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "generaltests": {
       "commandName": "Project",
-      "commandLineArgs": "--test"
+      "commandLineArgs": "--test=general"
+    },
+    "markdowntests": {
+      "commandName": "Project",
+      "commandLineArgs": "--test=markdown"
     }
   }
 }
