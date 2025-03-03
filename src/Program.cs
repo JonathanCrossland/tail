@@ -1,4 +1,5 @@
-using tail.Tests;
+using Tail;
+using Tail.Tests;
 
 public class Program
 {
@@ -15,6 +16,9 @@ public class Program
             {
                 case "general":
                     new GeneralTests().Run();
+                    break;
+                case "tail":
+                    new TailTests().Run();
                     break;
                 case "markdown":
                     new MarkdownTests().Run();
@@ -34,11 +38,13 @@ public class Program
                 new Definition(pattern, replacement)
             };
 
-            Tail tail = new Tail(definitions);
+            TailLang tail = new TailLang(definitions);
             tail.ParseDefinitions();
 
             string result = tail.Parse(input);
             Console.WriteLine($"Result: {result}");
+           
+
         }
         else
         {

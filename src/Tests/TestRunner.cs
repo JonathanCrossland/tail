@@ -1,3 +1,5 @@
+using Tail.Tests;
+
 public abstract class TestRunner 
 {
     private static int _testCaseCounter = 0;

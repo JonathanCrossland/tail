@@ -1,7 +1,9 @@
-using System.Collections.Generic;
-using System.Text;
+namespace Tail.Parser;
 
-public class TailParser
+using System.Text;
+using System.Xml.Linq;
+
+internal partial class TailParser
 {
     private string _Input;
     private int _Position;
@@ -16,7 +18,7 @@ public class TailParser
     private const char ContainsLiteralStartChar = '{';
     private const char ContainsLiteralEndChar = '}';
 
-    public List<Token> ParseKey(string key = "")
+    internal List<Token> ParseKey(string key = "")
     {
         _Input = key ?? "";
         _Position = 0;
@@ -38,7 +40,7 @@ public class TailParser
         return _Tokens;
     }
 
-    private void EatHighPriority()
+    protected void EatHighPriority()
     {
         if (_Position < _Input.Length && PeekChar() == HighPriorityChar && _Tokens.Count == 0 && _Position == 0)
         {
@@ -224,42 +226,5 @@ public class TailParser
         return _Input[_Position];
     }
 
-    public abstract class Token
-    {
-        public Token(string value = null)
-        {
-            Value = value;
-        }
-        public string Value { get; set; }
-    }
-
-    public class PriorityToken : Token
-    {
-        public PriorityToken() : base() { }
-    }
-
-    public class PrefixToken : Token
-    {
-        public PrefixToken(string value) : base(value) { }
-    }
-
-    public class SuffixToken : Token
-    {
-        public SuffixToken(string value) : base(value) { }
-    }
-
-    public class LiteralToken : Token
-    {
-        public LiteralToken(string value) : base(value) { }
-    }
-
-    public class ContainsLiteralToken : Token
-    {
-        public ContainsLiteralToken(string value) : base(value) { }
-    }
-
-    public class WhitespaceToken : Token
-    {
-        public WhitespaceToken(string value) : base(value) { }
-    }
+   
 }

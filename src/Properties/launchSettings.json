@@ -11,6 +11,10 @@
     "markdowntests": {
       "commandName": "Project",
       "commandLineArgs": "--test=markdown"
+    },
+    "tail": {
+      "commandName": "Project",
+      "commandLineArgs": "--test=tail"
     }
   }
 }

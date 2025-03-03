@@ -4,6 +4,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>markdowntests</ActiveDebugProfile>
+    <ActiveDebugProfile>tail</ActiveDebugProfile>
   </PropertyGroup>
 </Project>
